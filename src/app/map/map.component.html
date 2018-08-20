@@ -1,0 +1,41 @@
+<br><div style="width: 100vw;">
+
+  
+<div>  
+<button (click)="add()">+</button>
+<p>{{count/1000}}k.m</p>
+<button (click)="sub()">-</button>
+<p>this is{{this.searchTex}}</p>
+<button (click)="findMe()">Where I am</button>
+</div>
+<agm-map 
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="true">
+  
+  <agm-marker 
+      *ngFor="let m of markers | filter : searchTex | map:count/1000 ; let i = index"
+      (markerClick)="clickedMarker(m.name, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.name"
+      [markerDraggable]="m.draggable"
+      (dragEnd)="markerDragEnd(m, $event)">
+      
+    <agm-info-window>
+      <strong>InfoWindow content{{m.label}}</strong>
+    </agm-info-window>
+    
+  </agm-marker>
+  
+  <agm-circle [latitude]="lat" [longitude]="lng" 
+      [radius]="count"
+      [fillColor]="'red'"
+      [circleDraggable]="false"
+      [editable]="false">
+  </agm-circle>
+
+</agm-map>
+</div>

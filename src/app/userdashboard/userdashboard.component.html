@@ -1,0 +1,140 @@
+<br><br><br><br>
+<a (click)="logout()" class="btn btn-info btn-sm"  style="float:right">
+    <span class="glyphicon glyphicon-log-out"></span> Log out
+  </a>
+  <section class="container py-4">
+      <div class="row">
+          <div class="col-md-12">
+              <h2 style="text-align: center;">User Dashboard</h2>
+              <ul id="tabsJustified" class="nav nav-tabs">
+                  <li class="nav-item"><a href="" data-target="#myprof" data-toggle="tab" class="nav-link small text-uppercase active">My Profile</a></li>
+                  <li class="nav-item"><a href="" data-target="#orders" data-toggle="tab" class="nav-link small text-uppercase ">Orders</a></li>
+                  <li class="nav-item"><a href="" data-target="#fav" data-toggle="tab" class="nav-link small text-uppercase ">Favourites</a></li>
+                  <li class="nav-item"><a href="" data-target="#update" data-toggle="tab" class="nav-link small text-uppercase ">Edit info</a></li>
+              </ul>
+              <br>
+              <div id="tabsJustifiedContent" class="tab-content">
+                  <div id="myprof" class="tab-pane fade active show">
+                      <div class="list-group">
+                          <tr >
+                              <label>Username: </label>
+                              <td>{{listData?.name}}</td>
+                          </tr>
+
+                          <tr >
+                            <label>Email: </label>
+                            <td>{{listData?.email}}</td>
+                        </tr>
+                              <!-- <td>{{listData?.uid}}</td> -->
+                         <tr >
+                             <label>Phone number: </label>
+                             <td>{{listData?.phno}}</td>
+                         </tr>
+                         <tr >
+                            <label>Address: </label>
+                            <td>{{listData?.address}}</td>
+                        </tr>                        
+                    </div>
+                  </div>
+                  <div id="orders" class="tab-pane fade ">
+                      <div class="row pb-2">
+                          <div class="col-md-7">
+                              Orders
+                         <table id="customers" > 
+                           
+                            <tr>
+                              <th>S no</th>
+                              <th>Product</th>
+                              <th>Address</th>
+                              <th>Price</th>
+                              <th>Quantity</th>
+                            </tr>
+                                <tr *ngFor="let order of orderData;let i=index">
+                                  <td>{{i+1}}</td>
+                                  <td>{{order.product_name}}</td>
+                                  <td>{{order.address}}</td>
+                                  <td>{{order.price}}</td>
+                                  <td>{{order.quantity}}</td>
+                                </tr>                              
+                            </table>
+                          
+                              </div>
+                          <div class="col-md-5"></div>
+                      </div>
+                  </div>
+                  <div id="fav" class="tab-pane fade">
+                      <div class="list-group">
+                        <label>Your favourites will list here!</label>
+                      </div>
+                  </div>
+                  <div id="update" class="tab-pane fade">
+                      <div class="list-group">
+                        
+                        <div class="row">
+                            <div class="col-md-10">
+                                <form>
+                                  <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">User Name*</label> 
+                                    <div class="col-8">
+                                      <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text"  [(ngModel)]="updateDetails.name" [ngModelOptions]="{standalone: true}" [value]="this.listData.name">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="name" class="col-4 col-form-label">Email</label> 
+                                    <div class="col-8">
+                                      <input id="name" name="name" placeholder="Email" class="form-control here" type="email"  [(ngModel)]="updateDetails.email" [ngModelOptions]="{standalone: true}" [value]="this.listData.email">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="lastname" class="col-4 col-form-label">Mobile number</label> 
+                                    <div class="col-8">
+                                      <input id="lastname" name="Mobile number" placeholder="Mobile number" class="form-control here" type="number" [(ngModel)]="updateDetails.phno" [ngModelOptions]="{standalone: true}" [value]="this.listData.phno">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="text" class="col-4 col-form-label">Address</label> 
+                                    <div class="col-8">
+                                      <input id="text" name="text" placeholder="Address" class="form-control here" required="required" type="text" [(ngModel)]="updateDetails.address" [ngModelOptions]="{standalone: true}" [value]="this.listData.address">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="select" class="col-4 col-form-label">Password</label> 
+                                    <div class="col-8">
+                                        <input id="text" name="text" placeholder="Password" class="form-control here" required="required" type="password" [(ngModel)]="updateDetails.password" [ngModelOptions]="{standalone: true}" [value]="this.listData.password">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">Confirm password</label> 
+                                    <div class="col-8">
+                                      <input id="email" name="email" placeholder="Confirm password" class="form-control here" required="required" type="password"  [(ngModel)]="updateDetails1.confirmpassword" [ngModelOptions]="{standalone: true}" [value]="this.listData.password">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="website" class="col-4 col-form-label">Security question</label> 
+                                    <div class="col-8">
+                                      <input id="website" name="website" placeholder="eg: what is your nick name" class="form-control here" type="text"  [(ngModel)]="updateDetails.securityquestion" [ngModelOptions]="{standalone: true}" [value]="this.listData.securityquestion">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="newpass" class="col-4 col-form-label">Security answer</label> 
+                                    <div class="col-8">
+                                      <input id="newpass" name="newpass" placeholder="Your security answer" class="form-control here" type="text" [(ngModel)]="updateDetails.securityanswer" [ngModelOptions]="{standalone: true}" [value]="this.listData.securityanswer">
+                                    </div>
+                                  </div> 
+                                  <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                      <button name="submit" type="submit" class="btn btn-primary" (click)="updateProfile()">Update My Profile</button>
+                                    </div>
+                                  </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  

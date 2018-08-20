@@ -1,0 +1,118 @@
+  
+  <section class="container py-4">
+      <div class="row">
+          <div class="col-sm-6 col-md-12 col-lg-10 col-xs-12">
+              <h2>Tabs</h2>
+              <ul id="tabsJustified" class="nav nav-tabs">
+                  <li class="nav-item"><a href="" data-target="#myprof" data-toggle="tab" class="nav-link small text-uppercase active">My Profile</a></li>
+                  <li class="nav-item"><a href="" data-target="#orders" data-toggle="tab" class="nav-link small text-uppercase ">Orders</a></li>
+                  <li class="nav-item"><a href="" data-target="#fav" data-toggle="tab" class="nav-link small text-uppercase ">Address</a></li>
+                  <li class="nav-item"><a href="" data-target="#addr" data-toggle="tab" class="nav-link small text-uppercase ">Payment</a></li>
+              </ul>
+              <br>
+              <div id="tabsJustifiedContent" class="tab-content">
+                  <div id="myprof" class="tab-pane fade active show">
+                    
+                      <div class="list-group">
+                            <div class="btn-group" role="group" aria-label="Basic example" *ngIf="isLoggedOut">
+                              <button type="button" class="btn btn-secondary" (click)="logintoggle()">Login</button>
+                              <button type="button" class="btn btn-secondary" (click)="signuptoggle()">Sign up</button>
+                            </div>
+                      
+                          <div *ngIf="show">
+                              <div>
+                                <app-login></app-login>
+                              </div>
+                            </div>
+                      
+                          <div *ngIf="show1">
+                              <div>
+                                <app-signup></app-signup>
+                              </div>
+                              </div>
+                        </div>
+
+                        <!-- User status -->
+                        <div *ngIf="!isLoggedOut">
+                            Welcome {{this.username}}
+                        </div>
+                        
+                  </div>
+                  <div id="orders" class="tab-pane fade ">
+                      <div class="row pb-2">
+                          <div class="col-md-7">
+                                <table id="customers" > 
+                           
+                                        <tr>
+                                          <th>S no</th>
+                                          <th>Product</th>
+                                          <th>Address</th>
+                                          <th>Price</th>
+                                          <th>Quantity</th>
+                                        </tr>
+                                            <tr *ngFor="let order of orderData;let i=index">
+                                              <td>{{i+1}}</td>
+                                              <td>{{order.product_name}}</td>
+                                              <td>{{order.address}}</td>
+                                              <td>{{order.cost}}</td>
+                                              <td>{{order.quantity}}</td>
+                                            </tr>                              
+                                        </table>
+                          </div>
+                          <div class="col-md-5"></div>
+                      </div>
+                  </div>
+                  <!-- address area -->
+                  <div id="fav" class="tab-pane fade">
+                      <div class="list-group">
+                          <div class="row">
+                            <div class="col-md-6">
+                                <label><b>Your address</b></label>
+                                <p>{{address}}</p>
+                            </div>
+							 <div class="col-md-6">
+                                    <button (click)="addrtoggle()">Add new address</button><br><br>
+                                    <div *ngIf="newaddress">
+                                            <textarea placeholder="write something..." required [(ngModel)]="providerDetail1.address" [ngModelOptions]="{standalone: true}"></textarea>
+                                            <input type="submit" (click)="changeaddr()">
+                                    </div>   
+                            </div>
+                        </div>
+                 </div>
+                </div>                                                                               
+
+                <!-- payment area -->
+                <div id="addr" class="tab-pane fade">
+                      <div >
+                            <input type="number" [(ngModel)]="finalAmount" style="padding-bottom: 10px;">
+                            <h2 *ngIf="paypalLoad">Paypal button is loading</h2>
+                           <div id="paypal-checkout-btn"></div>  
+                      </div>
+                </div>
+              </div>
+    
+          </div>
+          <div class="col-md-2">
+              <table >
+                  <tbody>
+                      <tr>
+                          <td>Order subtotal</td>
+                          <th>${{this.total1}}</th>
+                      </tr>
+                      <tr>
+                          <td>Shipping and handling</td>
+                          <th>$30.00</th>
+                      </tr>
+                      <tr>
+                          <td>Tax</td>
+                          <th>${{tax}}</th>
+                      </tr>
+                      <tr class="total">
+                          <td>Total</td>
+                          <th>${{this.total}}</th>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </section>

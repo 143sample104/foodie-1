@@ -1,0 +1,95 @@
+<!-- 
+<div class="bg-img">
+    
+      <div class="container">
+        <h1>SignUp</h1>
+        
+        <label for="username"><b>Username</b></label>
+        <input type="text" required [(ngModel)]="providerDetails.name" [ngModelOptions]="{standalone: true}">
+  
+        <label for="email"><b>Email</b></label>
+        <input type="email" required [(ngModel)]="providerDetails.email" [ngModelOptions]="{standalone: true}">
+        
+        <label for="number"><b>Mobile number</b></label>
+        <input type="number" required [(ngModel)]="providerDetails.phno" [ngModelOptions]="{standalone: true}">
+  
+        <label for="address"><b>Address</b></label>
+        <input type="text"required [(ngModel)]="providerDetails.address" [ngModelOptions]="{standalone: true}">
+        
+        <label for="psw"><b>Password</b></label>
+        <input type="password" required [(ngModel)]="providerDetails.password" [ngModelOptions]="{standalone: true}">
+  
+        <label for="psw"><b>Confirm Password</b></label>
+        <input type="password" required [(ngModel)]="providerDetail.confirmpassword" [ngModelOptions]="{standalone: true}">
+
+        <label for="psw"><b>Enter securiy question</b></label>
+        <input type="text" required [(ngModel)]="providerDetails.securityquestion" [ngModelOptions]="{standalone: true}" >
+  
+        <label for="psw"><b>Enter securiy answer</b></label>
+        <input type="text" required [(ngModel)]="providerDetails.securityanswer" [ngModelOptions]="{standalone: true}">
+  
+        <button type="submit" class="bttn" (click)="signup()">Submit</button>
+        
+      </div>
+      <div class="align1">
+        <p style="text-align: center">Exixting user?</p>
+        <button type="button" class="btn btn-primary btn-sm" id="vicky" routerLink="/login">Login</button>
+      </div>
+  </div> -->
+
+
+  <div class="container" id="LoginForm">
+      <!-- <h1 class="form-heading">login Form</h1> -->
+      <div class="login-form">
+      <div class="main-div">
+          <div class="panel">
+         <h2>User Signup</h2>
+         <p>Please enter your details</p>
+         </div>
+          <form id="Login" >
+      
+              <div class="form-group">
+
+                  <input type="text" class="form-control" placeholder="Username" id="inputEmail" required [(ngModel)]="providerDetails.name" [ngModelOptions]="{standalone: true}">
+      
+              </div>
+              <div class="form-group">
+
+                  <input type="email" class="form-control" placeholder="Email id" id="inputEmail" required [(ngModel)]="providerDetails.email" [ngModelOptions]="{standalone: true}">
+              </div>
+              <div class="form-group">
+                 <input type="number" class="form-control" placeholder="Mobile number" id="inputEmail" required [(ngModel)]="providerDetails.phno" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="form-group">
+
+                    <input type="text" class="form-control" placeholder="Address" id="inputEmail" required [(ngModel)]="providerDetails.address" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control" placeholder="Password" id="inputEmail" required [(ngModel)]="providerDetails.password" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control" placeholder="Confirm password" id="inputEmail" required [(ngModel)]="providerDetail.confirmpassword" [ngModelOptions]="{standalone: true}">
+                </div>
+            
+            
+              <div class="form-group">
+
+                  <input type="text" class="form-control" placeholder="Securityquestion" id="inputEmail" required [(ngModel)]="providerDetails.securityquestion" [ngModelOptions]="{standalone: true}">
+              </div>  <div class="form-group">
+
+                  <input type="text" class="form-control" placeholder="Security answer" id="inputEmail" required [(ngModel)]="providerDetails.securityanswer" [ngModelOptions]="{standalone: true}">
+              </div>
+              <button type="submit" class="btn btn-secondary" (click)="signup()">Login</button>
+               
+          </form>
+          </div>
+           <div>
+             <p>Already have an account?</p>
+             <button type="button" class="btn btn-outline-info"  id="vicky2" routerLink="/login">Login</button>
+           </div>
+      <!-- <p class="botto-text"> Designed by Sunil Rajput</p> -->
+      </div>
+    </div>
+    
